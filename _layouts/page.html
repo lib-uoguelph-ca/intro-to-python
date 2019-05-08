@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<article class="post">
+
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title | escape }}</h1>
+    </header>
+
+    <div class="post-content">
+        {{ content }}
+    </div>
+
+    <div class="pager">
+        {%- if page.nav_previous -%}
+            <a class="left button" href="{{site.baseurl}}/steps/{{page.nav_previous}}">&lt;&lt; Previous</a>
+        {%- endif -%}
+
+        {%- if page.nav_next -%}
+            <a class="right button" href="{{site.baseurl}}/steps/{{page.nav_next}}">Next &gt;&gt;</a>
+        {%- endif -%}
+    </div>
+</article>

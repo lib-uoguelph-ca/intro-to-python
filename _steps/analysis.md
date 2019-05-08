@@ -1,5 +1,5 @@
 ---
-previous: analysis.md
-next: visualizing.md
+nav_previous: extending
+nav_next: visualizing
 layout: page
 ---

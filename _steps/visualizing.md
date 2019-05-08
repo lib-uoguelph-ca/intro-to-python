@@ -1,5 +1,4 @@
 ---
-previous: analysis.md
-next: 
+nav_previous: analysis
 layout: page
 ---

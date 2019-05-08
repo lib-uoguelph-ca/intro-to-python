@@ -1,6 +1,5 @@
 ---
-previous:
-next: running.md
+nav_next: variables
 layout: page
 ---
 

@@ -1,5 +1,5 @@
 ---
-previous: setup.md
-next: functions.md
+nav_previous: setup
+nav_next: functions
 layout: page
 ---

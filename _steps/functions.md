@@ -1,5 +1,5 @@
 ---
-previous: variables.md
-next: extending.md
+nav_previous: variables
+nav_next: extending
 layout: page
 ---
