@@ -123,3 +123,6 @@ While we've modified `temp` before printing out `temp_in_c`, `temp_in_c` does no
 ### Other Variable Types
 
 There are a lot of other types of variables that store more complex data and can be used for other types of calculations. For example, the datetime type can be used to store stores a date and a time. Once we have a variable of this type, we can use it to math with date, like asking what date it will be if we add 49 days from the current date and what day of the week it will be. 
+
+For more information on all of the available variable types, refer to the [Python Documentation: Data Model](https://docs.python.org/3/reference/datamodel.html#objects-values-and-types)
+

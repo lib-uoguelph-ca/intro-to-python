@@ -26,6 +26,7 @@ url: "http://lib-uoguelph-ca.github.io" # the base hostname & protocol for your 
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
 theme: minima
 plugins:
   - jekyll-feed
