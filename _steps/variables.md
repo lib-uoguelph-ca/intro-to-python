@@ -1,6 +1,6 @@
 ---
 nav_previous: setup
-nav_next: functions
+nav_next: pycharm
 layout: page
 ---
 

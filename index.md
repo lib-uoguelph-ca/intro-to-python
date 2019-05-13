@@ -7,6 +7,7 @@ title: Intro to Python
 ---
 ## Part 1
 * [Setup](steps/setup)
+* [The PyCharm IDE](steps/pycharm)
 * [Variables](steps/variables)
 * [Functions](steps/functions)
 * [Extending Python](steps/extending)
