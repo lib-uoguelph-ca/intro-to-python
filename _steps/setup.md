@@ -65,23 +65,4 @@ Create a New Project
 
 ![Creating a new Conda environment in PyCharm](../assets/images/pycharm-new-project-conda.png)
 
-
-Starting a new project
-* Create new project
-* Add a new script file
-* Introduce the PyCharm UI
-    * The project explorer
-    * The editor pane 
-    * The python console
-* Running Python code
-    * The console
-    * Running a script
-    
-    
-
-In the python console, enter the following and push the **return** key. 
-{% highlight python %}
-(72 − 32) * (5/9)
-{% endhighlight %}
-
-
+That's it! Our new project is set up and ready!

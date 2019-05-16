@@ -14,7 +14,7 @@ This code does one thing: It converts 72 degrees Fahrenheit to Celsius. That's g
 
 ## Python Basics: Variables
 
-Variables are a fundamental part of programming. They allow us to make bits of code generic, so that it can easily be reused. 
+Variables are a fundamental part of programming. They allow us to make our code generic, so that it can easily be reused. 
 
 In python, we can define a variable by giving it a name, and assigning some value to it using the assignment operator, the equals sign:
 
@@ -34,7 +34,7 @@ temp_in_c = (temp − 32) * (5/9)
 
 <div class="aside" markdown="1">
 
-**Note:** Variable names are case sensitive, so if in the code above we were to refer tot temp with a capital T, it would produce an error: 
+**Note:** Variable names are case sensitive, so if in the code above we were to refer to temp with a capital T, it would produce an error: 
 
 ![Python error indicating that the the variable Temp does not exist](../assets/images/name-error.png)
 
@@ -42,7 +42,7 @@ temp_in_c = (temp − 32) * (5/9)
 
 <div class="aside" markdown="1">
 
-###What's in a variable? 
+### What's in a variable? 
 
 In the python console, you can print the value of a variable by writing its name: 
 
@@ -69,19 +69,19 @@ In our code above, the `temp` variable has a type of 'integer'. Python determine
 temp = 72
 {% endhighlight %}
 
-`temp` will have an integer type because we've assigned a number without decimal places. 
+Here, `temp` will have an integer type because we've assigned a number without decimal places. 
 
 {% highlight python %}
 temp2 = 72.0
 {% endhighlight %}
  
-`temp2` will have a type of float because we've assigned a value with a fractional component. 
+Here, `temp2` will have a type of float because we've assigned a value with a fractional component. 
 
 {% highlight python %}
 word = "Banana"
 {% endhighlight %}
 
-`word` will have a type of string because we've assigned a value wrapped in quotes.
+And here, `word` will have a type of string because we've assigned a value wrapped in quotes.
 
 <div class="aside" markdown="1">
 
@@ -119,6 +119,21 @@ print(temp_in_c)
 When python evaluates a script it does so by reading the script line by line from the top to the bottom. As it does this, it keeps a running 'state' of all of the variables that have been declared and their values. When the variable `temp_in_c` is assigned only takes the value of the expression resulting from the current state. It evaluates the expression on the right side of the assignment operator, and then assigns the result to our new variable, `temp_in_c`. 
 
 While we've modified `temp` before printing out `temp_in_c`, `temp_in_c` does not change because it only stores the result of the expression, not the expression itself.
+
+### Operations with Variables
+
+In our temperature conversion code above you can see we're working with numeric types (floats and integers), which means we have the usual suite of mathematical operators to use when manipulating these variables. When I introduced the concept of variables, I mentioned that Python will handle different types of variables in different ways. For example, if we have two string variables, we can still add them together using the `+` operator. However this time, Python knows to treat these variables as strings, not numbers, so we get a different result:
+
+{% highlight python %}
+
+result = "Hello" + "World"
+print(result)
+
+{% endhighlight %}
+
+Will produce: 
+
+```HelloWorld```
 
 ### Other Variable Types
 
