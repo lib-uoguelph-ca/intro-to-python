@@ -3,3 +3,87 @@ nav_previous: variables
 nav_next: extending
 layout: page
 ---
+
+## What is a Function?
+In the last lesson, we used the print function to print out the value of a variable, but we talked about what a function actually is. Functions are useful bits of code, written by someone else, that we can drop into our programs. We can think of them as building blocks for our programs that we can use to perform complex behaviours without having to reinvent the wheel ourselves. For example, the `len` function can be used to find the length of a string. 
+
+Most of the time, a function will take some kind of data that it needs to do its job (input), perform some processing, and produce some result (output). For example, the `len` function takes a string as input, counts the number of characters in the string, and outputs the number of characters.
+
+## How Do I Use a Function?
+
+We can execute, or call, a function by writing its name followed by a set of parentheses containing a comma-separated list of the values we want to pass in as input. When a function produces output, which we often call a **return value**, that value is substituted in place of the function call. It's very common for us to capture that return value by assigning it to a variable that we can reference later:
+
+{% highlight python %}
+greeting = 'Hello World'
+greeting_length = len(greeting)
+print("The length of our greeting is: ", greeting_length)
+{% endhighlight %} 
+
+<div class="aside" markdown="1">
+
+### A Closer Look
+
+A few things to note about this code: 
+1. The print function will take as many inputs as we want to give it. When we do that, it will print each one after the other. 
+2. Recall that as the script is executed, each function call will be evaluated and replaced with it's return value. Python will always evaluate expressions in an inside-out order, so we can pass the result of a function call as an argument to another function. So, instead of saving the length of the string in a separate variable, we could pass that expression directly to the print call: 
+
+{% highlight python %}
+greeting = 'Hello World'
+print("The length of our greeting is: ", len(greeting))
+{% endhighlight %}
+ 
+</div>
+
+## What Input Does a Function Take?
+
+The best way to learn about any function is to refer to the [Python documentation](https://docs.python.org). This documentation describes everything contained in the Python language, including a section on the [built-in functions](https://docs.python.org/3/library/functions.html) that come with the language out of the box. 
+
+### Function Arguments
+
+The formal name for inputs we pass to a function is **arguments**. When each function is created, it defines a list of the various arguments that it can take. The way that these arguments are defined is important as this is how the function determines which arguments are required, and which ones are optional, and the order in which you should pass them. Let's take a look at the `round` function go get an example of how this works:
+
+![Documentation for the round function](../assets/images/round-documentation.png)
+
+Here we can see that the round function takes two arguments, one called `number`, and one called `ndigits`. Here's some python code that uses this function: 
+
+{% highlight python %}
+value = 12.3456
+rounded_value = round(value, 2)
+print(rounded_value)
+{% endhighlight %} 
+
+This code prints the following: `12.35`. 
+
+The function takes the `number` and rounds it to the number of decimal places specified by the `ndigits` argument. Note that the order here is important. The first argument we pass will be used as the `number` argument, and the second will be the `digits` argument. 
+
+The first argument, `number` is and example of a required argument. Typically, if any arguments are required they are listed first. In this example, we and we can see that it is required because it is listed as a plain argument without any special symbols around it. So you could say that arguments are required by default unless specified otherwise. In contrast to this, the `number` argument is an optional argument, which is signified by the square brackets surrounding it. 
+
+Another way we could use the round function is by specifying the name of the arguments as we call the function: 
+
+{% highlight python %}
+value = 12.3456
+rounded_value = round(number=value, ndigits=2)
+print(rounded_value)
+{% endhighlight %} 
+
+When we do this, we say that we're using *named arguments*. When you use named arguments, we don't have to follow the order described in the documentation, so we could get the same result using the following code:
+
+{% highlight python %}
+value = 12.3456
+rounded_value = round(ndigits=2, number=value)
+print(rounded_value)
+{% endhighlight %} 
+
+For a more complex example, let's take a look at the documentation of the [print function](https://docs.python.org/3/library/functions.html#print):
+
+![Documentation for the print function](../assets/images/print-documentation.png)
+
+Here we see that first argument this function takes is called `objects`. You might also notice that `objects` listed with a asterisk, which signifies that we can provide multiple values for this argument. There are also a list of other arguments listed, such as the `sep` and `end` arguments. One thing that's a bit different here is that these arguments include a default value, which is specified by an equals sign and the value that it will have by default. If the argument isn't supplied when the function is called, the function will use the default value.
+
+The `objects` argument is a bit greedy, since it can take multiple values. It will gobble up any non-named arguments that we pass at the beginning of our function call. The only way we can specify the `sep` or `end` arguments is by passing them as named arguments:
+
+{% highlight python %}
+print("These are my favourite fruit:")
+print("Cherries", "Apples", "Bananas", sep=", ", end="!\n")
+{% endhighlight %}                                                                                 
+
