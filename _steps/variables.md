@@ -135,6 +135,69 @@ Will produce:
 
 ```HelloWorld```
 
+### Lists
+
+A list is a way for a single variable to store multiple values. Let's define a list of temperatures that we'd like to convert: 
+
+{% highlight python %}
+
+temps = [72, 70, 68, 110]
+
+{% endhighlight %}
+
+Individual elements in a list don't have to all have the same type, so if you wanted you could define a list such as: 
+
+{% highlight python %}
+
+temps = [72, 70, 68, "orange"]
+
+{% endhighlight %}
+
+Though in practice, you don't end up doing this too often since having lists of the same type of objects makes it easier for us to write code to process all of the list elements in bulk. 
+
+When we have a list, we can access individual elements of it by their position in the list, which we call their *index*. In python, it's important to remember that indexes always start counting at 0, so the first item has index 0, the second has index 1 and so on. We can access an item in a list using the indexing operator:
+{% highlight python %}
+
+first_item = temps[0]
+last_temp = temps[3]
+
+{% endhighlight %}
+
+We can also subset our list by using something called slicing: 
+
+{% highlight python %}
+
+front_half = temps[0:2]
+back_half = temps[2:5]
+
+{% endhighlight %}
+
+When slicing we provide the start and end indices separated by a colon. It's important to note that the list slicing does not include the last element. So if we use the slice `0:3` it will return the list items at index 0, 1, and 2.
+
+When we're slicing to the beginning or the end of the list like we are above, we can leave out the corresponding index:
+
+{% highlight python %}
+
+front_half = temps[:2]
+back_half = temps[2:]
+
+{% endhighlight %}
+
+<div class="aside" markdown="1">
+#### Strings as Lists
+
+Python lets us treat strings as lists of characters so we can use the same indexing and slicing techniques to work with text data: 
+
+{% highlight python %}
+
+greeting = "Hello World"
+print(greeting[0]) # H
+print(greting[0:5]) # Hello
+
+{% endhighlight %}
+
+</div>
+
 ### Other Variable Types
 
 There are a lot of other types of variables that store more complex data and can be used for other types of calculations. For example, the datetime type can be used to store stores a date and a time. Once we have a variable of this type, we can use it to math with date, like asking what date it will be if we add 49 days from the current date and what day of the week it will be. 
