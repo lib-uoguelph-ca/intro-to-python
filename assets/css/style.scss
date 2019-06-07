@@ -2,6 +2,10 @@
 ---
 @import "minima";
 
+a {
+  color: #2373db;
+}
+
 .aside {
   border: 1px solid #EEEEEE;
   padding: 1em;
@@ -15,4 +19,32 @@
 
 .right {
   float: right;
+}
+
+/* Fix code snippets with line numbers */
+.rouge-table {
+  margin-bottom: 0;
+  border: none;
+
+  td {
+    border: none;
+    padding: 0;
+  }
+
+  pre {
+    border: none;
+    margin-bottom: 0;
+  }
+
+  .gutter, .rouge-gutter {
+    padding: 0;
+
+    .lineno{
+      float: left;
+      background-color:#3f3f3f;
+      color: white;
+
+    }
+
+  }
 }
