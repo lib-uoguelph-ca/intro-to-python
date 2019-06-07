@@ -23,15 +23,24 @@ Before we can use a module we have to first make it available for use in our cod
 Let's give it a try using the math module:
 {% highlight python %}
 import math
+{% endhighlight %}
 
 
+This is the simplest way to import a module. By doing this we import the whole module in its entirety. Once you've done that, you can call functions in this module by using the name of the module, followed by a period, and the name of the function.
+
+{% highlight python %}
 result = math.ceil(1.2) # 2
 result = math.floor(1.2) # 1
 result = math.gcd(144, 12) # 12
-
 {% endhighlight %}
 
-The simplest way to import a module is to import the whole thing at once. Then you can call functions in this module by using the name of the module, followed by a period, and the name of the function.
+<div class="aside" markdown="1">
+
+### The Dot Notation in Python
+
+You'll see this dot notation all over in python. Whenever you find it, it's always an indication that the thing on the left contains the thing on the right, or conversely that the thing one right is part of the thing on the left. In this example, the `math` module contains the `gcd` function. 
+
+</div>
 
 That certainly works, but it can get a bit painful to constantly be typing `math` over and over again. In order to cut down on this, we can give the math module a new shorter name:
 
