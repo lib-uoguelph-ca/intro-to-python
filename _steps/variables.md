@@ -1,14 +1,14 @@
 ---
 nav_previous: setup
-nav_next: functions
+nav_next: control_flow
 layout: page
 ---
 
 Our first line of python code is useful in a specific way, but isn't useful otherwise: 
 
-{% highlight python %}
+```
 (72 − 32) * (5/9)
-{% endhighlight %}
+```
 
 This code does one thing: It converts 72 degrees Fahrenheit to Celsius. That's great! But what happens when we want to convert another temperature?
 
@@ -18,9 +18,9 @@ Variables are a fundamental part of programming. They allow us to make our code 
 
 In python, we can define a variable by giving it a name, and assigning some value to it using the assignment operator, the equals sign:
 
-{% highlight python %}
+```
 temp = 72
-{% endhighlight %}
+```
 
 This statement defines a new variable, which we have called temp. We can name a variable anything we want as long as it conforms to some basic rules: 
 1. The name must be made up of letters, numbers, and underscores
@@ -28,9 +28,9 @@ This statement defines a new variable, which we have called temp. We can name a 
 
 Anywhere we write python code, we can now use our variable name, and the python interpreter will automatically substitute the value that we have assigned to the variable in its place:
 
-{% highlight python %}
+```
 temp_in_c = (temp − 32) * (5/9)
-{% endhighlight %}
+```
 
 <div class="aside" markdown="1">
 
@@ -50,9 +50,9 @@ In the python console, you can print the value of a variable by writing its name
 
 In your python script files, you can use the `print` function to print the value of a variable:
 
-{% highlight python %}
+```
 print(temp_in_c)
-{% endhighlight %}
+```
 
 </div>
 
@@ -65,21 +65,21 @@ Variables in python have a type associated with them, which affects how python w
 
 In our code above, the `temp` variable has a type of 'integer'. Python determines the type of the variable by considering the value that we assign:
 
-{% highlight python %}
+``` 
 temp = 72
-{% endhighlight %}
+```
 
 Here, `temp` will have an integer type because we've assigned a number without decimal places. 
 
-{% highlight python %}
+```
 temp2 = 72.0
-{% endhighlight %}
+```
  
 Here, `temp2` will have a type of float because we've assigned a value with a fractional component. 
 
-{% highlight python %}
+```
 word = "Banana"
-{% endhighlight %}
+```
 
 And here, `word` will have a type of string because we've assigned a value wrapped in quotes.
 
@@ -101,20 +101,20 @@ Both kinds of quotes are supported so that we mix them when we need to. This let
 
 If we ever want to change the value of a variable, all we have to do is use the assignment operator to give it a new value: 
 
-{% highlight python %}
+```
 temp = 82
-{% endhighlight %} 
+``` 
 
 ### Variables Store Values, Not Expressions
 When a variable is assigned a that is the result of a more complicated expression, it only stores the result of that expression. For example, in our temperature conversion code:
 
-{% highlight python %}
+```
 temp = 72
 temp_in_c = (temp − 32) * (5/9)
 
 temp=32
 print(temp_in_c)
-{% endhighlight %} 
+``` 
 
 When python evaluates a script it does so by reading the script line by line from the top to the bottom. As it does this, it keeps a running 'state' of all of the variables that have been declared and their values. When the variable `temp_in_c` is assigned only takes the value of the expression resulting from the current state. It evaluates the expression on the right side of the assignment operator, and then assigns the result to our new variable, `temp_in_c`. 
 
@@ -124,77 +124,64 @@ While we've modified `temp` before printing out `temp_in_c`, `temp_in_c` does no
 
 In our temperature conversion code above you can see we're working with numeric types (floats and integers), which means we have the usual suite of mathematical operators to use when manipulating these variables. When I introduced the concept of variables, I mentioned that Python will handle different types of variables in different ways. For example, if we have two string variables, we can still add them together using the `+` operator. However this time, Python knows to treat these variables as strings, not numbers, so we get a different result:
 
-{% highlight python %}
-
+```
 result = "Hello" + "World"
 print(result)
-
-{% endhighlight %}
+```
 
 Will produce: 
 
-```HelloWorld```
+`HelloWorld`
 
 ### Lists
 
 A list is a way for a single variable to store multiple values. Let's define a list of temperatures that we'd like to convert: 
 
-{% highlight python %}
-
+```
 temps = [72, 70, 68, 110]
-
-{% endhighlight %}
+```
 
 Individual elements in a list don't have to all have the same type, so if you wanted you could define a list such as: 
 
-{% highlight python %}
-
+```
 temps = [72, 70, 68, "orange"]
-
-{% endhighlight %}
+```
 
 Though in practice, you don't end up doing this too often since having lists of the same type of objects makes it easier for us to write code to process all of the list elements in bulk. 
 
 When we have a list, we can access individual elements of it by their position in the list, which we call their *index*. In python, it's important to remember that indexes always start counting at 0, so the first item has index 0, the second has index 1 and so on. We can access an item in a list using the indexing operator:
-{% highlight python %}
 
+```
 first_item = temps[0]
 last_temp = temps[3]
-
-{% endhighlight %}
+```
 
 We can also subset our list by using something called slicing: 
 
-{% highlight python %}
-
+```
 front_half = temps[0:2]
 back_half = temps[2:5]
-
-{% endhighlight %}
+```
 
 When slicing we provide the start and end indices separated by a colon. It's important to note that the list slicing does not include the last element. So if we use the slice `0:3` it will return the list items at index 0, 1, and 2.
 
 When we're slicing to the beginning or the end of the list like we are above, we can leave out the corresponding index:
 
-{% highlight python %}
-
+```
 front_half = temps[:2]
 back_half = temps[2:]
-
-{% endhighlight %}
+```
 
 <div class="aside" markdown="1">
 #### Strings as Lists
 
 Python lets us treat strings as lists of characters so we can use the same indexing and slicing techniques to work with text data: 
 
-{% highlight python %}
-
+```
 greeting = "Hello World"
 print(greeting[0]) # H
 print(greting[0:5]) # Hello
-
-{% endhighlight %}
+```
 
 </div>
 

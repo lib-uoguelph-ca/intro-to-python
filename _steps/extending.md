@@ -21,18 +21,18 @@ The Python documentation provides a nice index of all of the modules available a
 Before we can use a module we have to first make it available for use in our code using an **import** statement. Technically these can go anywhere in your code though it's good practice to include all of your module imports at the top of your file so it's easy to see all the various modules your code will use in one place. 
 
 Let's give it a try using the math module:
-{% highlight python %}
+```
 import math
-{% endhighlight %}
+```
 
 
 This is the simplest way to import a module. By doing this we import the whole module in its entirety. Once you've done that, you can call functions in this module by using the name of the module, followed by a period, and the name of the function.
 
-{% highlight python %}
+```
 result = math.ceil(1.2) # 2
 result = math.floor(1.2) # 1
 result = math.gcd(144, 12) # 12
-{% endhighlight %}
+```
 
 <div class="aside" markdown="1">
 
@@ -44,23 +44,22 @@ You'll see this dot notation all over in python. Whenever you find it, it's alwa
 
 That certainly works, but it can get a bit painful to constantly be typing `math` over and over again. In order to cut down on this, we can give the math module a new shorter name:
 
-{% highlight python %}
+```
 import math as m
 
 
 result = m.ceil(1.2) # 2
 result = m.floor(1.2) # 1
 result = m.gcd(144, 12) # 12
-
-{% endhighlight %}
+```
 
 If you only need one or two functions from a module, then there's no need to import the whole thing! We can import only the specific parts that we need:
 
-{% highlight python %}
+```
 from math import floor
 
 result = floor(1.2) # 1
-{% endhighlight %}
+```
 
 <div class="aside" markdown="1">
 

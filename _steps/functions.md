@@ -13,11 +13,11 @@ Most of the time, a function will take some kind of data that it needs to do its
 
 We can execute, or call, a function by writing its name followed by a set of parentheses containing a comma-separated list of the values we want to pass in as input. When a function produces output, which we often call a **return value**, that value is substituted in place of the function call. It's very common for us to capture that return value by assigning it to a variable that we can reference later:
 
-{% highlight python %}
+```
 greeting = 'Hello World'
 greeting_length = len(greeting)
 print("The length of our greeting is: ", greeting_length)
-{% endhighlight %} 
+``` 
 
 <div class="aside" markdown="1">
 
@@ -27,10 +27,10 @@ A few things to note about this code:
 1. The print function will take as many inputs as we want to give it. When we do that, it will print each one after the other. 
 2. Recall that as the script is executed, each function call will be evaluated and replaced with it's return value. Python will always evaluate expressions in an inside-out order, so we can pass the result of a function call as an argument to another function. So, instead of saving the length of the string in a separate variable, we could pass that expression directly to the print call: 
 
-{% highlight python %}
+```
 greeting = 'Hello World'
 print("The length of our greeting is: ", len(greeting))
-{% endhighlight %}
+```
  
 </div>
 
@@ -46,11 +46,11 @@ The formal name for inputs we pass to a function is **arguments**. When each fun
 
 Here we can see that the round function takes two arguments, one called `number`, and one called `ndigits`. Here's some python code that uses this function: 
 
-{% highlight python %}
+```
 value = 12.3456
 rounded_value = round(value, 2)
 print(rounded_value)
-{% endhighlight %} 
+``` 
 
 This code prints the following: `12.35`. 
 
@@ -60,19 +60,19 @@ The first argument, `number` is and example of a required argument. Typically, i
 
 Another way we could use the round function is by specifying the name of the arguments as we call the function: 
 
-{% highlight python %}
+```
 value = 12.3456
 rounded_value = round(number=value, ndigits=2)
 print(rounded_value)
-{% endhighlight %} 
+``` 
 
 When we do this, we say that we're using *named arguments*. When you use named arguments, we don't have to follow the order described in the documentation, so we could get the same result using the following code:
 
-{% highlight python %}
+```
 value = 12.3456
 rounded_value = round(ndigits=2, number=value)
 print(rounded_value)
-{% endhighlight %} 
+``` 
 
 For a more complex example, let's take a look at the documentation of the [print function](https://docs.python.org/3/library/functions.html#print):
 
@@ -82,8 +82,50 @@ Here we see that first argument this function takes is called `objects`. You mig
 
 The `objects` argument is a bit greedy, since it can take multiple values. It will gobble up any non-named arguments that we pass at the beginning of our function call. The only way we can specify the `sep` or `end` arguments is by passing them as named arguments:
 
-{% highlight python %}
+```
 print("These are my favourite fruit:")
 print("Cherries", "Apples", "Bananas", sep=", ", end="!\n")
-{% endhighlight %}                                                                                 
+```                                                                                 
+
+## Creating Your Own Functions
+
+A common mantra among programmers is *"Don't repeat yourself"*. The whole idea behind this concept is that we should avoid writing the same or similar code over and over. Why? Because sooner or later your code will have a bug, or need to be changed. And when you've repeated that code 75 times across 50 code files it can be really difficult to track down and fix every copy of that code. If ever realize that you've missed even one of those 75 then you've got to spend the time to go through and check every single one. What a waste!
+
+Writing your code as a function is the solution to this problem. That way you can write a function once, and if it ever has to change, then it's easy to make the change in just one place. Let's look at an example using our code for temperature conversions:
+
+```
+def fahrenheit_to_celcius(temp_f):
+    temp_c = (temp_f - 32) * (5 / 9)
+    return temp_c
+```   
+
+Let's take a closer look at this code: 
+* `def` in the first line stands for define. This indicates that we're about to define a new function. 
+* `fahrenheit_to_celcius` is the name that we've chosen to give our function. The name is arbitrary, but must follow some basic rules just like a variable name: 
+    * They must start with a letter or an underscore.
+    * They can have numbers
+* As we've already seen from the other function documentation, the variables in between the parentheses indicate the input that our function expects to receive. 
+* The function definition line must end with a colon. 
+* The indentation on the second and third lines is very important! In Python, we indent with tab characters, and the python interpreter uses this indentation to determine where our function begins and ends. 
+* The last line includes the return keyword. Whatever comes after it will be the output of this function. This returned value can be captured by assigning it to a variable when calling the function. 
+
+Now that we've got our function defined, let's take it for a spin: 
+
+```
+temp_c = fahrenheit_to_celcius(32)
+print(temp_c)
+
+temp_c = fahrenheit_to_celcius(78)
+print(temp_c)
+
+temp_c = fahrenheit_to_celcius(1000)
+print(temp_c)
+```
+
+{% highlight none %}
+0.0
+25.555555555555557
+537.7777777777778
+{% endhighlight %}
+
 

@@ -48,9 +48,9 @@ The editor will automatically adjust to the file that we're editing. So if we're
 
 Let's write our first line of Python code. In our scratch file, let's add a single python expression: 
 
-{% highlight python %}
+```
 (72 - 32) * (5/9)
-{% endhighlight %}
+```
 
 Notice how some  parts of our expressions are coloured differently than others. This is an example of syntax highlighting in action. For this small example it doesn't seem to add much, but syntax highlighting is an important part of any IDE. Once you internalize the rules of the syntax highlighting, it help to make code more readable and will even help you to identify mistakes and typos in your code. 
 
@@ -62,9 +62,9 @@ The Python Console is a command line interface to a self-contained Python enviro
 
 The console is completely isolated from the code that we run in our Python scripts, so you can feel free to experiment without fear of ruining your other work. Let's write the same expression from our scratch file into the console and push **enter**.
 
-{% highlight python %}
+```
 (72 - 32) * (5/9)
-{% endhighlight %}
+```
 
 As you can see as soon as we push enter, our code is run immediately and the console prints out the result for us: 
 

@@ -13,3 +13,8 @@ title: Intro to Python
 * [Extending Python](steps/extending)
 * [Data Analysis](steps/analysis)
 * [Visualizing](steps/visualizing)
+
+## To Do: 
+* Examples
+* Exercises
+* Styling callout for actions
