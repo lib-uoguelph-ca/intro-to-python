@@ -156,20 +156,26 @@ first_item = temps[0]
 last_temp = temps[3]
 ```
 
-We can also subset our list by using something called slicing: 
+We can update a list item the by assigning a new value a new value to the index:
+
+```
+temps[0] = 75
+```
+
+We can also subset our list by using something called slicing, which lets us subset our list: 
 
 ```
 front_half = temps[0:2]
 back_half = temps[2:5]
 ```
 
-When slicing we provide the start and end indices separated by a colon. It's important to note that the list slicing does not include the last element. So if we use the slice `0:3` it will return the list items at index 0, 1, and 2.
+When slicing we provide the start and end indices separated by a colon. It's important to note that the list slicing does not include the last element. So in the code above where we use the slice `0:2` it will return the list items at index 0 and 1.
 
-When we're slicing to the beginning or the end of the list like we are above, we can leave out the corresponding index:
+When we're slicing from the beginning of the list or to the end like we are above, we can leave out the start or end index and python will just assume that we want to start at the beginning or end at the end.
 
 ```
-front_half = temps[:2]
-back_half = temps[2:]
+front_half = temps[:2] # Equivalent to [0:2]
+back_half = temps[2:] # Equivalent to [2:5]
 ```
 
 <div class="aside" markdown="1">
