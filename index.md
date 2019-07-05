@@ -9,6 +9,7 @@ title: Intro to Python
 * [Setup](steps/setup)
 * [The PyCharm IDE](steps/pycharm)
 * [Variables](steps/variables)
+* [Control Flow](steps/control_flow)
 * [Functions](steps/functions)
 * [Extending Python](steps/extending)
 * [Data Analysis](steps/analysis)
