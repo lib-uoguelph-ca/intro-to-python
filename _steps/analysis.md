@@ -1,5 +1,4 @@
 ---
-
 title: Data Analysis With Python
 nav_previous: extending
 nav_next: visualizing
@@ -16,7 +15,7 @@ The [dataset](../assets/files/Rossi.csv) we'll be working with today is one that
 
 The [documentation page](https://vincentarelbundock.github.io/Rdatasets/doc/carData/Rossi.html) describes the columns that are present in the dataset.
 
-![Step](../assets/images/step.png) Let's start by downloading this dataset into our Python project directory.
+Let's start by downloading this dataset into our Python project directory.
 
 ## The Pandas Package
 
@@ -194,59 +193,199 @@ max     52.000000    1.000000   44.000000   18.000000    6.000000
 ## Subsetting and Filtering Data with Pandas
 Now that we've had a chance to explore our data a little bit, we can start to dig a little deeper.
 
+### Filtering Using a Boolean Mask
 
+Let's start by trying to answer a simple question: Did the financial support program have an effect on recidivism?
 
-### Selecting individual values
+Let's create two subsets of our data, one where the individuals received financial support, and one where they did not: 
 
-There are two ways to select individual values out of a data frame by numerical index or by name. To select data by numerical index we use the `iloc` property along with the square brackets to indicate which position we'd like to access:
+One of the most common ways you'll see filtering done is by using a **boolean mask**. A boolean mask is a list of boolean values, one for each row in our dataset. If the value is `True` we know the row satisfied our condition and if it is `False` we know that it didn't:
 
 ```
-top_left = data.iloc[0,0]
-bottom_right = data.iloc[431, 61]
+support_mask = data["fin"] == "yes"
 ```
 
-When selecting by index in Python we always start counting at the number 0, and count down and then out from the top left corner of our dataset.
+Once we have our mask, we can then apply it to our data frame: 
 
-So, in the following example, the code `data.iloc[0,0]` will produce the value `20`, while the code`data.iloc[4,4]` will produce the value `'other'`
+```
+data_support = data[support_mask]
+print(data_support.head())
+```
 
 {% highlight none %}
-   week  arrest  fin  age   race wexp  ... emp47 emp48  emp49  emp50 emp51 emp52
-0    20       1   no   27  black   no  ...   NaN   NaN    NaN    NaN   NaN   NaN
-1    17       1   no   18  black   no  ...   NaN   NaN    NaN    NaN   NaN   NaN
-2    25       1   no   19  other  yes  ...   NaN   NaN    NaN    NaN   NaN   NaN
-3    52       0  yes   23  black  yes  ...   yes   yes    yes    yes   yes   yes
-4    52       0   no   19  other  yes  ...    no    no     no     no    no    no
+    week  arrest  fin  age   race wexp  ... emp47 emp48  emp49  emp50 emp51 emp52
+3     52       0  yes   23  black  yes  ...   yes   yes    yes    yes   yes   yes
+7     52       0  yes   21  black  yes  ...    no    no     no     no    no    no
+10    52       0  yes   26  black   no  ...   yes   yes    yes    yes   yes   yes
+15    46       1  yes   22  black  yes  ...   NaN   NaN    NaN    NaN   NaN   NaN
+21    52       0  yes   44  black  yes  ...   yes   yes    yes    yes   yes   yes
 {% endhighlight %}
 
-The other way to select individual values is by name. To select a value by name we use the `loc` property on the data frame object, and then use the same square bracket notation to indicate the names of the rows and columns we'd like to access:
+This works because the pandas data frame knows that if we index it using a list of booleans the same length as the data frame, then it will return all of the rows where the boolean value is `True`. 
+ 
+This same strategy will work with more complex conditions as well, though it can get a bit finicky:
 
 ```
-top_left = data.loc[0,"week"]
-bottom_right = data.loc[431, "emp52"]
+support_over_50_mask = (data["fin"] == "yes") & (data["age"] >= 50)
+data_support_over_50 = data[support_over_50_mask]
+print(data_support_over_50.head())
 ```
 
-By default the row index in this example is the same as the numerical index, but that's only because we haven't told pandas which column to use as the row index. If you have a column that you'd like to use for the row index, you can specify that as an argument when you read in your data:
+In those cases, it's often easier to use the built in query method: 
 
 ```
-data = pd.read_csv('Rossi.csv', index_col="index")
+data_support_over 50 = data.query("fin == 'yes' and age > 50")
 ```
 
-### Selecting Columns
-
-We can use a similar notation to access entire columns of data from our dataset. This comes in handy when we want to run statistics on an individual column alone. For example, we can select the age column:
+Once we've got a subset of our data, it's fairly easy to generate some statistics on it. For example, if we want to know how many people re-offended in each of our groups, then we can sum the arrest column: 
 
 ```
-ages = data["age"]
-print(ages)
+financial_support_mask = data["fin"] == "yes"
+data_financial_support = data[financial_support_mask]
+
+support_total_count = len(data_financial_support)
+support_arrest_count = data_financial_support['arrest'].sum()
+support_recidivism_rate = support_arrest_count / support_total_count 
+print("Recidivism rate - Financial support: ", support_recidivism_rate)
 ```
 
+And if we want to calculate proportion of recidivism, w
 
-# Filtering Rows by Value
-
-Often it's useful to filter rows of your dataset by some condition. For example, our dataset includes a `fin` column that indicates whether the individual received financial support after their release. Let's filter our data to only include those individuals:
+Which give us `48`. If we do the same for the no support group: 
 
 ```
-financial_support = data["fin"] == "yes"
-data_financial_support = data[financial_support]
+no_financial_support_mask = data["fin"] == "no"
+data_no_financial_support = data[no_financial_support_mask]
+
+no_support_total_count = len(data_no_financial_support)
+no_support_arrest_count = data_no_financial_support['arrest'].sum()
+no_support_recidivism_rate = no_support_arrest_count / no_support_total_count 
+print("Recidivism rate - No financial support: ", no_support_recidivism_rate)
 ```
 
+Which gives us `66`. 
+
+There are a whole suite of functions that we can use to calculate these aggregations including:
+
+| Function Name | NaN-safe Version | Description |
+|---------------|------------------|-------------|
+|np.sum 	    |np.nansum          | Compute sum of elements|
+|np.prod        |np.nanprod 	    | Compute product of elements|
+|np.mean        |np.nanmean 	    |Compute mean of elements|
+|np.std 	    |np.nanstd 	        |Compute standard deviation|
+|np.var 	    |np.nanvar 	        |Compute variance|
+|np.min 	    |np.nanmin 	        |Find minimum value|
+|np.max 	    |np.nanmax 	        |Find maximum value|
+|np.argmin 	    |np.nanargmin 	    |Find index of minimum value|
+|np.argmax 	    |np.nanargmax 	    |Find index of maximum value|
+|np.median 	    |np.nanmedian 	    |Compute median of elements|
+|np.percentile  |np.nanpercentile   |Compute rank-based statistics of elements|
+|np.any 	    |N/A                |Evaluate whether any elements are true|
+|np.all 	    |N/A                |Evaluate whether all elements are true|
+
+## Cleaning up our code:
+
+```
+data = pd.read_csv('Rossi.csv')
+
+financial_support_mask = data["fin"] == "yes"
+data_financial_support = data[financial_support_mask]
+
+support_total_count = len(data_financial_support)
+support_arrest_count = data_financial_support['arrest'].sum()
+support_recidivism_rate = support_arrest_count / support_total_count
+print("Recidivism rate - Financial support: ", support_recidivism_rate)
+
+no_financial_support_mask = data["fin"] == "no"
+data_no_financial_support = data[no_financial_support_mask]
+
+no_support_total_count = len(data_no_financial_support)
+no_support_arrest_count = data_no_financial_support['arrest'].sum()
+no_support_recidivism_rate = no_support_arrest_count / no_support_total_count
+print("Recidivism rate - No financial support: ", no_support_recidivism_rate)
+```
+
+You might have noticed that our code above isn't particularly DRY (Don't Repeat Yourself). We've already repeated ourselves a couple of times here, so we have some opportunities for improvement. Primarily, there are two places where we're doing almost the exact same thing:
+1. Subsetting our data
+2. Calculating the recidivism rate
+
+How might we create a more DRY version of this code? Functions!
+
+First let's define a function that will do the work of filtering our data:
+
+```
+def subset_data(data, column, value):
+    mask = data[column] == value
+    return data[mask]
+```
+
+Then, we can create another function to handle calculating the recidivism rate: 
+```
+def calculate_recidivism_rate(data):
+    total_count = len(data)
+    arrest_count = data['arrest'].sum()
+    return arrest_count / total_count
+```
+
+Now that we've got our functions defined, all we have to do is call them:
+
+```
+data_financial_support = subset_data(data, "fin", "yes")
+data_no_financial_support = subset_data(data, "fin", "no")
+
+support_recidivism_rate = calculate_recidivism_rate(data_financial_support)
+no_support_recidivism_rate = calculate_recidivism_rate(data_no_financial_support)
+
+print("Recidivism rate - Financial support: ", support_recidivism_rate)
+print("Recidivism rate - No financial support: ", no_support_recidivism_rate)
+```
+
+## Analyzing Multiple files
+
+Our dataset only has one file, but suppose that we had a second replication of this study conducted in another country and wanted to repeat our analysis for each file. The `glob` module makes it easy to to analyze multiple files:
+
+Let's create a second file to process by just creating a copy of our dataset. To keep everything neat and tidy, I'll move them both to a new `data` folder inside of our project directory.
+
+The glob module provides a glob function which will produce a list of files in a directory that match a pattern:
+
+```
+import glob
+files = glob.glob('data/*.csv')
+print(files)
+```
+
+This gives us a list containing our two files: `['data/Rossi-US.csv', 'data/Rossi-Canada.csv']`
+
+Now that we've got that, all we've got to do is loop through our files one at a time and process them using our functions: 
+
+```
+import glob
+import pandas as pd
+
+
+def subset_data(data, column, value):
+    mask = data[column] == value
+    return data[mask]
+
+
+def calculate_recidivism_rate(data):
+    total_count = len(data)
+    arrest_count = data['arrest'].sum()
+    return arrest_count / total_count
+
+
+files = glob.glob('data/*.csv')
+
+for file in files:
+    data = pd.read_csv(file)
+
+    data_financial_support = subset_data(data, "fin", "yes")
+    data_no_financial_support = subset_data(data, "fin", "no")
+
+    support_recidivism_rate = calculate_recidivism_rate(data_financial_support)
+    no_support_recidivism_rate = calculate_recidivism_rate(data_no_financial_support)
+
+    print(file)
+    print(support_recidivism_rate)
+    print(no_support_recidivism_rate)
+```

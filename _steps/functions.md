@@ -1,5 +1,5 @@
 ---
-nav_previous: variables
+nav_previous: control_flow
 nav_next: extending
 layout: page
 ---
@@ -7,7 +7,7 @@ layout: page
 ## What is a Function?
 In the last lesson, we used the print function to print out the value of a variable, but we talked about what a function actually is. Functions are useful bits of code, written by someone else, that we can drop into our programs. We can think of them as building blocks for our programs that we can use to perform complex behaviours without having to reinvent the wheel ourselves. For example, the `len` function can be used to find the length of a string. 
 
-Most of the time, a function will take some kind of data that it needs to do its job (input), perform some processing, and produce some result (output). For example, the `len` function takes a string as input, counts the number of characters in the string, and outputs the number of characters.
+Most of the time, a function will take some kind of data that it needs to do its job (input), perform some processing, and produce some result (output). For example, the `len` function takes an iterable such as a string as input, counts the number of elements in the iterable and outputs the number of characters.
 
 ## How Do I Use a Function?
 
@@ -47,8 +47,7 @@ The formal name for inputs we pass to a function is **arguments**. When each fun
 Here we can see that the round function takes two arguments, one called `number`, and one called `ndigits`. Here's some python code that uses this function: 
 
 ```
-value = 12.3456
-rounded_value = round(value, 2)
+rounded_value = round(12.3456, 2)
 print(rounded_value)
 ``` 
 
@@ -56,7 +55,7 @@ This code prints the following: `12.35`.
 
 The function takes the `number` and rounds it to the number of decimal places specified by the `ndigits` argument. Note that the order here is important. The first argument we pass will be used as the `number` argument, and the second will be the `digits` argument. 
 
-The first argument, `number` is and example of a required argument. Typically, if any arguments are required they are listed first. In this example, we and we can see that it is required because it is listed as a plain argument without any special symbols around it. So you could say that arguments are required by default unless specified otherwise. In contrast to this, the `number` argument is an optional argument, which is signified by the square brackets surrounding it. 
+The first argument, `number` is and example of a required argument. Typically, if any arguments are required they are listed first. In this example, we can see that it is required because it is listed as a plain argument without any special symbols around it. So you could say that arguments are required by default unless specified otherwise. In contrast to this, the `number` argument is an optional argument, which is signified by the square brackets surrounding it. 
 
 Another way we could use the round function is by specifying the name of the arguments as we call the function: 
 
@@ -78,9 +77,9 @@ For a more complex example, let's take a look at the documentation of the [print
 
 ![Documentation for the print function](../assets/images/print-documentation.png)
 
-Here we see that first argument this function takes is called `objects`. You might also notice that `objects` listed with a asterisk, which signifies that we can provide multiple values for this argument. There are also a list of other arguments listed, such as the `sep` and `end` arguments. One thing that's a bit different here is that these arguments include a default value, which is specified by an equals sign and the value that it will have by default. If the argument isn't supplied when the function is called, the function will use the default value.
+Here we see that first argument this function takes is called `objects`. You might also notice that `objects` listed with a asterisk, which signifies that we can provide multiple values for this argument. This argument is a bit greedy. It will gobble up any non-named arguments that we pass at the beginning of our function call. We can see that there are also a other arguments listed, such as the `sep` and `end` arguments. One thing that's a bit different here is that these arguments include a default value, which is specified by an equals sign and the value that it will have by default. This is another way of showing that an argument is optional. If the argument isn't supplied when the function is called, the function will use the default value.
 
-The `objects` argument is a bit greedy, since it can take multiple values. It will gobble up any non-named arguments that we pass at the beginning of our function call. The only way we can specify the `sep` or `end` arguments is by passing them as named arguments:
+Since we've got that greedy `objects` argument, the only way we can specify the `sep` or `end` arguments is by passing them as named arguments:
 
 ```
 print("These are my favourite fruit:")
@@ -91,7 +90,7 @@ print("Cherries", "Apples", "Bananas", sep=", ", end="!\n")
 
 A common mantra among programmers is *"Don't repeat yourself"*. The whole idea behind this concept is that we should avoid writing the same or similar code over and over. Why? Because sooner or later your code will have a bug, or need to be changed. And when you've repeated that code 75 times across 50 code files it can be really difficult to track down and fix every copy of that code. If ever realize that you've missed even one of those 75 then you've got to spend the time to go through and check every single one. What a waste!
 
-Writing your code as a function is the solution to this problem. That way you can write a function once, and if it ever has to change, then it's easy to make the change in just one place. Let's look at an example using our code for temperature conversions:
+As we've already seen, one solution is to use loops, which works in specific cases, but writing your code as a function is the most flexible solution to this problem. That way you can write a function once and use it all through your code. Let's look at an example using our code for temperature conversions:
 
 ```
 def fahrenheit_to_celcius(temp_f):
@@ -106,7 +105,7 @@ Let's take a closer look at this code:
     * They can have numbers
 * As we've already seen from the other function documentation, the variables in between the parentheses indicate the input that our function expects to receive. 
 * The function definition line must end with a colon. 
-* The indentation on the second and third lines is very important! In Python, we indent with tab characters, and the python interpreter uses this indentation to determine where our function begins and ends. 
+* Just as we did with our loops and if statements, we use indentation to define where the code for our function begins and ends. 
 * The last line includes the return keyword. Whatever comes after it will be the output of this function. This returned value can be captured by assigning it to a variable when calling the function. 
 
 Now that we've got our function defined, let's take it for a spin: 
@@ -128,4 +127,22 @@ print(temp_c)
 537.7777777777778
 {% endhighlight %}
 
+And now we can put it together with our looping example: 
+
+```
+temps_in_f = [72, 62, 68, 100]
+
+temps_in_c = []
+for temp in temps_in_f:
+    temp_c = fahrenheit_to_celcius(temp)
+    temps_in_c.append(temp_c)
+    
+print(temps_in_c)
+```
+
+Which produces: 
+
+{% highlight none %}
+[22.22222222222222, 16.666666666666668, 20.0, 37.77777777777778]
+{% endhighlight %}
 
