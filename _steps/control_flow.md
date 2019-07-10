@@ -167,7 +167,11 @@ This is a simplistic example but it demonstrates the power of loops. We're writt
 
 Lists in python are what we call, *iterable*, which means that it's designed to be used in a loop by processing one element at a time. The python for loop can work with anything that's *iterable*, such as a list or a string . The for loop will repeat the body of the loop once for each value in the iterable. As it does, it creates a new variable which we have called `name` and gives that variable the value of the current element from the iterable. We can then use that variable inside the body of the loop.
 
-<details class="aside" markdown="1">
+<div class="aside" markdown="1">
+
+### ![Activity](../assets/images/step.png) Check Your Understanding
+
+<details markdown="1">
 
 <summary>
 How might we use a for loop to convert a list of temperatures in Fahrenheit to Celsius?
@@ -206,6 +210,8 @@ print(temps_in_c)
 
 </details>
 
+</div>
+
 Another kind of loop is the while loop, which is like a loop combined with an if statement. The while loop lets us define some condition the same way we would in an if statement, and then the loop will continue to operate as long as that condition remains true:
 
 ```
@@ -232,7 +238,11 @@ while average_temp < 70:
 print(f"Threshold passed after {index} days.")
 ```
 
-<details class="aside" markdown="1">
+<div class="aside" markdown="1">
+
+### ![Activity](../assets/images/step.png) Check Your Understanding
+
+<details markdown="1">
 
 <summary>
 Write a while loop that counts the number of letters in a string before the first letter "z".
@@ -265,3 +275,5 @@ print(count, " characters before z")
 ```
 
 </details>
+
+</div>

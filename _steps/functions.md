@@ -128,13 +128,17 @@ print(temp_c)
 {% endhighlight %}
 
 And now we can put it together with our looping example: 
+<div class="aside" markdown="1">
 
-<details class="aside" markdown="1">
+### ![Activity](../assets/images/step.png) Check Your Understanding
+
+<details markdown="1">
 
 <summary>
 Modify our temperature conversion loop from the control flow lesson to use our new function:
 
 <div markdown="1">
+
 
 ```
 # Start With: 
@@ -166,4 +170,4 @@ print(temps_in_c)
 ```
 
 </details>
-
+</div>
