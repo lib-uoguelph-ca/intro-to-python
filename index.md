@@ -14,8 +14,3 @@ title: Intro to Python
 * [Extending Python](steps/extending)
 * [Data Analysis](steps/analysis)
 * [Code Style & Best Practices](steps/style)
-
-## To Do: 
-* Examples
-* Exercises
-* Styling callout for actions
