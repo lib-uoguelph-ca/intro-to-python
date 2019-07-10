@@ -111,9 +111,6 @@ Say that we want to standardize all of our temperatures to Celsius. Let's start 
 temps = [72, 20, 68, 100]
 units = ['F', 'C', 'F', 'C']
 
-print(temps)
-print(units)
-
 if units[0] == 'F':
     temp_in_c = (temps[0] - 32) * (5/9)
     temps[0] = temp_in_c
@@ -128,9 +125,6 @@ Now that we've got it working for the first value, we can repeat the process for
 ```
 temps = [72, 20, 68, 100]
 units = ['F', 'C', 'F', 'C']
-
-print(temps)
-print(units)
 
 if units[0] == 'F':
     temp_in_c = (temps[0] - 32) * (5/9)
@@ -161,7 +155,7 @@ We're writing very similar code over and over again. It's repetitive, and fragil
 
 ## Looping
 
-These sorts of repetitive tasks are where another kind of control flow, looping, becomes really useful. Loops let us write code once, and then repeat it over and over:
+These sorts of repetitive tasks are where another kind of control flow, looping, becomes really useful. Loops let us write code once and then repeat it over and over:
 
 ```
 names = ["Mike", "Leo", "Don", "Raph"]
@@ -169,11 +163,35 @@ for name in names:
     print("Hello " + name)
 ```
 
-This is a simplistic example, but it demonstrates the power of loops. We're written one line of generic code and using the loop we've managed to run that code multiple times without having to write it out. 
+This is a simplistic example but it demonstrates the power of loops. We're written one line of generic code and using the loop we've managed to run that code multiple times without having to write it out. 
 
-Lists in python are what we call, *iterable*, which means that it's designed to be looped over one element at a time. The python for loop can work with anything that's *iterable*, such as a list or a string . The for loop will repeat the body of the loop once for each value in the iterable. As it does, it creates a new variable which we have called `name` and gives that variable the value of the current element from the iterable. We can then use that variable inside the body of the loop.
+Lists in python are what we call, *iterable*, which means that it's designed to be used in a loop by processing one element at a time. The python for loop can work with anything that's *iterable*, such as a list or a string . The for loop will repeat the body of the loop once for each value in the iterable. As it does, it creates a new variable which we have called `name` and gives that variable the value of the current element from the iterable. We can then use that variable inside the body of the loop.
 
-For a more complex example, we might have a list of temperatures in Fahrenheit we that we want to convert to Celsius:
+<details class="aside" markdown="1">
+
+<summary>
+How might we use a for loop to convert a list of temperatures in Fahrenheit to Celsius?
+
+<div markdown="1">
+
+```
+# Start With: 
+temps = [72, 62, 68, 100]
+
+# Store the converted temperatures in this list
+temps_in_c = []
+
+# Note that you can add a new element to a list by calling its append method: 
+# temps_in_c.append(22)
+
+# Your code here:
+```
+
+</div>
+
+</summary>
+
+Solution: 
 
 ```
 temps_in_f = [72, 62, 68, 100]
@@ -186,6 +204,8 @@ for temp in temps_in_f:
 print(temps_in_c)
 ```
 
+</details>
+
 Another kind of loop is the while loop, which is like a loop combined with an if statement. The while loop lets us define some condition the same way we would in an if statement, and then the loop will continue to operate as long as that condition remains true:
 
 ```
@@ -195,7 +215,7 @@ while count < 4:
     count = count + 1
 ```
 
-Again using our temperature example, say we want to count the days before the average temperature for a year exceeds some threshold value:
+A more complex loop using our temperature example, say we want to count the days before the average temperature for a year exceeds some threshold value:
 
 ```
 temps = [62, 72, 70, 74, 77, 71, 72]
@@ -211,3 +231,37 @@ while average_temp < 70:
 
 print(f"Threshold passed after {index} days.")
 ```
+
+<details class="aside" markdown="1">
+
+<summary>
+Write a while loop that counts the number of letters in a string before the first letter "z".
+
+<div markdown="1">
+
+```
+# Start With: 
+elements = "nickel copper zinc gallium"
+
+# Your code here: 
+```
+
+</div>
+
+</summary>
+
+Solution: 
+
+```
+elements = "nickel copper zinc gallium"
+
+count = 0
+letter = elements[0]
+while letter != 'z':
+    count = count + 1
+    letter = elements[count]
+
+print(count, " characters before z")
+```
+
+</details>

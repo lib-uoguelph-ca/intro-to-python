@@ -129,6 +129,31 @@ print(temp_c)
 
 And now we can put it together with our looping example: 
 
+<details class="aside" markdown="1">
+
+<summary>
+Modify our temperature conversion loop from the control flow lesson to use our new function:
+
+<div markdown="1">
+
+```
+# Start With: 
+temps_in_f = [72, 62, 68, 100]
+
+temps_in_c = []
+for temp in temps_in_f:
+    temp_c = (temp - 32) * (5/9)
+    temps_in_c.append(temp_c)
+    
+print(temps_in_c)
+```
+
+</div>
+
+</summary>
+
+Solution: 
+
 ```
 temps_in_f = [72, 62, 68, 100]
 
@@ -140,9 +165,5 @@ for temp in temps_in_f:
 print(temps_in_c)
 ```
 
-Which produces: 
-
-{% highlight none %}
-[22.22222222222222, 16.666666666666668, 20.0, 37.77777777777778]
-{% endhighlight %}
+</details>
 
