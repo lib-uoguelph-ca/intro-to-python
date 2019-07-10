@@ -13,7 +13,7 @@ title: Intro to Python
 * [Functions](steps/functions)
 * [Extending Python](steps/extending)
 * [Data Analysis](steps/analysis)
-* [Visualizing](steps/visualizing)
+* [Code Style & Best Practices](steps/style)
 
 ## To Do: 
 * Examples

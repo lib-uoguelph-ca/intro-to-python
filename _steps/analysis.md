@@ -1,7 +1,7 @@
 ---
 title: Data Analysis With Python
 nav_previous: extending
-nav_next: visualizing
+nav_next: style
 layout: page
 ---
 
