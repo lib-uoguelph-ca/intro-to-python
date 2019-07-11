@@ -40,7 +40,11 @@ import pandas as pd
 In order to import a dataset, pandas provides a set of functions to import data from a variety of formats:
 
 * `read_csv`
+* `read_json`
 * `read_excel`
+* `read_html`
+* `read_sas`
+* `read_stata`
 
 Our data is in CSV format, so we'll import it using the `read_csv` function: 
 
@@ -243,13 +247,21 @@ Once we've got a subset of our data, it's fairly easy to generate some statistic
 financial_support_mask = data["fin"] == "yes"
 data_financial_support = data[financial_support_mask]
 
+support_arrest_count = data_financial_support['arrest'].sum()
+print(support_arrest_count)
+```
+
+And if we want to calculate proportion of recidivism, we can calculate the number of arrests out of the cases in the subset:
+
+```
+financial_support_mask = data["fin"] == "yes"
+data_financial_support = data[financial_support_mask]
+
 support_total_count = len(data_financial_support)
 support_arrest_count = data_financial_support['arrest'].sum()
 support_recidivism_rate = support_arrest_count / support_total_count 
 print("Recidivism rate - Financial support: ", support_recidivism_rate)
 ```
-
-And if we want to calculate proportion of recidivism, w
 
 Which give us `48`. If we do the same for the no support group: 
 
