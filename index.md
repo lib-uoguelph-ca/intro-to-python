@@ -14,3 +14,4 @@ title: Intro to Python
 * [Extending Python](steps/extending)
 * [Data Analysis](steps/analysis)
 * [Code Style & Best Practices](steps/style)
+* [Resources](steps/resources)

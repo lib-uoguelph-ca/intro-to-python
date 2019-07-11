@@ -1,7 +1,7 @@
 ---
 title: Code Style & Best Practices
 nav_previous: extending
-nav_next: visualizing
+nav_next: resources
 layout: page
 ---
 ## Code Style
