@@ -65,6 +65,8 @@ Sooner or later, you're going to write code that doesn't work the way you expect
 6. Make notes and keep track of what you've done.
 7. Talk through it with someone else. 
 8. Learn to use a debugger.
+
+
  
 
 

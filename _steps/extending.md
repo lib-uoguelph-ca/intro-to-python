@@ -8,7 +8,7 @@ layout: page
 
 Looking at the list of built-in functions, you might wonder *"Is that it? Am I expected to build everything else from scratch?"*
 
-Fortunately, the answer is no! Python uses a system known as modules to provide a wide array of extra functions and data types. In many other programming languages, we call these **libraries**. In the Python world, they're known more formally as **modules**, though we'll use the term library interchangeably.
+Fortunately, the answer is no! Python uses a system known as modules to provide a wide array of extra functions and data types. In many other programming languages, we call these **libraries**. In the Python world, they're known more formally as **modules** or **packages**, though we might also use the term library interchangeably.
 
 The Python documentation provides a nice index of all of the modules available as part of the [Python Standard Library](https://docs.python.org/3/library/index.html#library-index). Some examples:
 
@@ -47,7 +47,6 @@ That certainly works, but it can get a bit painful to constantly be typing `math
 ```
 import math as m
 
-
 result = m.ceil(1.2) # 2
 result = m.floor(1.2) # 1
 result = m.gcd(144, 12) # 12
@@ -65,7 +64,7 @@ result = floor(1.2) # 1
 
 ### Why Don't We Just Import Everything?
 
-A good way to think of this is to think of our Python environment as our workbench and the Python modules as our tools. If you've only got to drill a hole in a board, there's no reason you'd need your soldering iron, jackhammer, or table saw to get the work done. Getting all those tools out will just waste time, and they'll clutter up your workbench. The Python environment works in the same way. The more modules we import, the more bloated and cluttered our code and memory will be. This results in code that takes up more memory and runs more slowly.
+A good way to think of this is to think of our Python environment as our workbench and the Python modules as our tools. If you've only got to drill a hole in a board, there's no reason you'd need your soldering iron, jackhammer, or table saw to get the work done. Getting all those tools out will just waste time, and they'll clutter up your workbench. The Python environment works in the same way. The more modules we import, the more bloated and cluttered our code and memory will be. This results in code that is less efficient and runs more slowly.
 
 </div>
 
@@ -86,3 +85,24 @@ Conda will automatically find and download the right version of the pandas libra
 Python itself comes with an easy way to install packages from PyPI, the command line utility `pip`. Installing a package with pip is very similar to installing a package with conda: 
 
 `pip install pandas`
+
+<div class="aside" markdown="1">
+
+### ![Activity](../assets/images/step.png) Check Your Understanding
+
+<details markdown="1">
+
+<summary markdown="1">The [time module](https://docs.python.org/3/library/time.html) provides a number of functions to work with time including the [localtime function](https://docs.python.org/3/library/time.html#time.localtime), which returns information about the current time of your machine. Import the time module and use the `localtime()` funciton to determine what day of the year it is (as if you started counting days since January 1). Hint: Read the documentation.
+</summary>
+
+Solution: 
+
+```
+import time
+current_time = time.localtime()
+day_in_year = current_time.tm_yday
+print(day_in_year)
+```
+
+</details>
+</div>
