@@ -65,4 +65,28 @@ Create a New Project
 
 ![Creating a new Conda environment in PyCharm](../assets/images/pycharm-new-project-conda.png)
 
+<div class="aside" markdown="1">
+
+### Where is the Conda Executable?
+
+If the **Conda executable** doesn't have a value, you'll have to provide the location of your conda executable. 
+
+On windows you can find this path by:
+
+1. Open the Anaconda Prompt from the start menu
+2. Type `where conda.exe`
+3. Push enter
+
+On my system, the path is `C:\Users\doana\AppData\Continuum\anaconda3\Scripts\conda.exe`
+
+On OSX: 
+
+1. Open the Terminal application
+2. Type `which conda`
+3. Push enter
+
+On my system, the path is: `/Users/doana/anaconda3/bin/conda`
+
+</div>
+
 That's it! Our new project is set up and ready!
